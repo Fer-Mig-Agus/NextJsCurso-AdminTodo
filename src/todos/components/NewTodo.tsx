@@ -1,10 +1,11 @@
 'use client';
 import { useState } from "react";
 import { Todo } from "@/generated/prisma";
-import * as todosApi from '@/todos/helpers/todos';
+//import * as todosApi from '@/todos/helpers/todos';
 import { FormEvent } from "react";
 import { IoTrashOutline } from "react-icons/io5";
 import { useRouter } from "next/navigation";
+import { addTodo, deleteCompleted } from "../actions/todo-actions";
 
 
 export const NewTodo = () => { 
@@ -17,17 +18,19 @@ export const NewTodo = () => {
         event.preventDefault();
         if (description.trim().length === 0) return ;
 
-        await todosApi.createTodo(description);
+        await addTodo(description)
+
+        setDescription("")
         
-        router.refresh()  
+        //router.refresh()  
     }
 
 
-    const deleteCompleted=async(event:any)=>{
-        event.preventDefault()
-        await todosApi.deleteCompleteTodos()
-        router.refresh()
-    }
+    // const deleteCompleted=async(event:any)=>{
+    //     event.preventDefault()
+    //     await todosApi.deleteCompleteTodos()
+    //     router.refresh()
+    // }
 
   return (
     <form onSubmit={onSubmit} className='flex w-full'>
@@ -44,7 +47,7 @@ export const NewTodo = () => {
       <span className='flex flex-1'></span>
 
       <button 
-        onClick={ deleteCompleted }
+        onClick={ async()=>{ await deleteCompleted()} }
         type='button' className="flex items-center justify-center rounded ml-2 bg-red-400 p-2 text-white hover:bg-red-700 transition-all cursor-pointer">
         <IoTrashOutline />
         <span className="mx-2">
