@@ -1,5 +1,5 @@
-import { ProductCard } from '@/producst';
-import { products } from '@/producst/data/products';
+import { ProductCard } from '@/products';
+import { products } from '@/products/data/products';
 
 export default function ProductsPage() {
   return (
