@@ -1,6 +1,6 @@
 import {  CiLogout,} from 'react-icons/ci';
 
-import {  IoCalendarOutline, IoCheckboxOutline, IoListOutline, IoLogoReact } from 'react-icons/io5'
+import {  IoBasketOutline, IoCalendarOutline, IoCheckboxOutline, IoCodeWorkingOutline, IoListOutline, IoLogoReact } from 'react-icons/io5'
 import SidebarItemPage from './SidebarItem';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -18,9 +18,19 @@ const itemsDashboard= [
     path:'/dashboard/rest-todo'
   },
   {
-    title:'Rest TODOS',
+    title:'Server TODOS',
     icon: <IoListOutline size={30} />,
     path:'/dashboard/server-todos'
+  },
+  {
+    title:'Cookies',
+    icon: <IoCodeWorkingOutline size={30} />,
+    path:'/dashboard/cookies'
+  },
+  {
+    title:'Products',
+    icon: <IoBasketOutline size={30} />,
+    path:'/dashboard/products'
   },
 ]
 
