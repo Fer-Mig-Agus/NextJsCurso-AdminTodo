@@ -4,6 +4,9 @@ import {  IoBasketOutline, IoCalendarOutline, IoCheckboxOutline, IoCodeWorkingOu
 import SidebarItemPage from './SidebarItem';
 import Link from 'next/link';
 import Image from 'next/image';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { redirect } from 'next/navigation';
 
 
 const itemsDashboard= [
@@ -35,7 +38,16 @@ const itemsDashboard= [
 ]
 
 
-export default function SidebarPage() {
+export default async function SidebarPage() {
+
+    const session = await getServerSession(authOptions);
+
+    const avatarUrl = (session?.user?.image) ? session?.user?.image : 'https://images.unsplash.com/photo-1542909168-82c3e7fdca5c';
+    const userName = session?.user?.name ?? 'No Name';
+    //const userRol = session?.user?.name ?? 'No Name';
+
+    
+  
   return (
     <>
       
@@ -52,8 +64,16 @@ export default function SidebarPage() {
 
           <div className="mt-8 text-center">
             {/* Next/Image */}
-            <Image src="https://images.unsplash.com/photo-1542909168-82c3e7fdca5c" alt="" className="w-10 h-10 m-auto rounded-full object-cover lg:w-28 lg:h-28" width={40} height={40} />
-              <h5 className="hidden mt-4 text-xl font-semibold text-gray-600 lg:block">Michael F.</h5>
+            {/* <Image src="https://images.unsplash.com/photo-1542909168-82c3e7fdca5c" alt="" className="w-10 h-10 m-auto rounded-full object-cover lg:w-28 lg:h-28" width={40} height={40} /> */}
+            <Image
+                        className="w-10 h-10 m-auto rounded-full object-cover lg:w-28 lg:h-28" width={40} height={40}
+                          src={avatarUrl}
+                          width={250}
+                          height={250}
+                          alt={userName}
+                        />
+              <h5 className="hidden mt-4 text-xl font-semibold text-gray-600 lg:block"> {userName}
+</h5>
               <span className="hidden text-gray-400 lg:block">Admin</span>
           </div>
 
