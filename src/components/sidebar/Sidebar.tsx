@@ -1,6 +1,6 @@
 import {  CiLogout,} from 'react-icons/ci';
 
-import {  IoBasketOutline, IoCalendarOutline, IoCheckboxOutline, IoCodeWorkingOutline, IoListOutline, IoLogoReact } from 'react-icons/io5'
+import {  IoBasketOutline, IoCalendarOutline, IoCheckboxOutline, IoCodeWorkingOutline, IoListOutline, IoLogoReact, IoPersonOutline } from 'react-icons/io5'
 import SidebarItemPage from './SidebarItem';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -35,6 +35,11 @@ const itemsDashboard= [
     icon: <IoBasketOutline size={30} />,
     path:'/dashboard/products'
   },
+  {
+    title:'Profile',
+    icon: <IoPersonOutline size={30} />,
+    path:'/dashboard/profile'
+  },
 ]
 
 
@@ -66,7 +71,7 @@ export default async function SidebarPage() {
             {/* Next/Image */}
             {/* <Image src="https://images.unsplash.com/photo-1542909168-82c3e7fdca5c" alt="" className="w-10 h-10 m-auto rounded-full object-cover lg:w-28 lg:h-28" width={40} height={40} /> */}
             <Image
-                        className="w-10 h-10 m-auto rounded-full object-cover lg:w-28 lg:h-28" width={40} height={40}
+                        className="w-10 h-10 m-auto rounded-full object-cover lg:w-28 lg:h-28"
                           src={avatarUrl}
                           width={250}
                           height={250}
