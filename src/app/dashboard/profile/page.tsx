@@ -17,6 +17,9 @@ const Profile = () => {
         </div>
 
         <span>{session?.user?.image}</span>
+        <span>{session?.user?.id}</span>
+        <span>{session?.user?.roles}</span>
+
       </div>
     </div>
   );
